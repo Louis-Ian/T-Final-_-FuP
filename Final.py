@@ -109,14 +109,14 @@ def jogadaPlayer(): #Função que recebe a linha e a coluna do player,
 
 def validadorDeCoord(vetorComCoordenas):
 	
-	Linha = linha(vetorComCoordenas[0])
-	Coluna = coluna(vetorComCoordenas[1])
+	Linha = linha(vetorComCoordenas)
+	Coluna = coluna(vetorComCoordenas)
 
 	if (coord[Linha][Coluna] != " "):
 		print("Insira coordenadas que ainda não utilizadas:")
 		return False
 	else:
-		True
+		return True
 
 def simbolo():
 	Simb = raw_input("Símbolo do jogador 1: ")
