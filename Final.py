@@ -107,6 +107,17 @@ def jogadaPlayer(): #Função que recebe a linha e a coluna do player,
 		print("Insira posições válidas.")
 		return jogadaPlayer()
 
+def validadorDeCoord(vetorComCoordenas):
+	
+	Linha = linha(vetorComCoordenas)
+	Coluna = coluna(vetorComCoordenas)
+
+	if (coord[Linha][Coluna] != " "):
+		print("Insira coordenadas que ainda não utilizadas:")
+		return False
+	else:
+		return True
+
 def simbolo():
 	Simb = raw_input("Símbolo do jogador 1: ")
 
@@ -149,7 +160,11 @@ while (inicio!=0): #0 significa: "Não recomeçar um partida". Por isso um While
 		
 		if rodada%2!=0 and rodada<10: #Se a rodada for ímpar o Jogador1 deve jogar. p1
 			print("JOGADOR 1: ")
-			entrada = jogadaPlayer()
+			
+			SituacaoDasCoordenadas = False
+			while(SituacaoDasCoordenadas==False):
+				entrada = jogadaPlayer()
+				SituacaoDasCoordenadas = validadorDeCoord(entrada)
 
 			posicaox=coluna(entrada) #Coordenadas do símbolo inserido por último.
 			posicaoy=linha(entrada) #Coordenadas do símbolo inserido por último.
