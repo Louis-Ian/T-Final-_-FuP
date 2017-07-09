@@ -24,16 +24,21 @@ def tabela(vetor, simb): #Função que recebe o símbolo como parâmetro e, ao c
 	coluna = ord(vetor[0])-65
 	linha = int(vetor[1])-1
 
-	coord[linha][coluna] = simb
-	
-	print  "  A   B   C"
-	print "1 %s | %s | %s 1" %( coord[0][0], coord[0][1], coord[0][2]) 
-	print " ---+---+---"
-	print "2 %s | %s | %s 2" %( coord[1][0], coord[1][1], coord[1][2])  
-	print " ---+---+---"
-	print "3 %s | %s | %s 3" %( coord[2][0], coord[2][1], coord[2][2])  
-	print "  A   B   C"
-	#Os prints's acima imprimem a figura sendo que as posições da "matriz" coord já estão identificadas com os seus lugares na figura.
+	if (coord[linha][coluna] != " "):
+		print("Insira coordenadas que ainda não utilizadas:")
+		return 1
+
+	else:
+		coord[linha][coluna] = simb
+		
+		print  "  A   B   C"
+		print "1 %s | %s | %s 1" %( coord[0][0], coord[0][1], coord[0][2]) 
+		print " ---+---+---"
+		print "2 %s | %s | %s 2" %( coord[1][0], coord[1][1], coord[1][2])  
+		print " ---+---+---"
+		print "3 %s | %s | %s 3" %( coord[2][0], coord[2][1], coord[2][2])  
+		print "  A   B   C"
+		#Os prints's acima imprimem a figura sendo que as posições da "matriz" coord já estão identificadas com os seus lugares na figura.
 
 
 rotacionadorX=[0,0,1,2,1,2,1,2,0,0,-1,-2,-1,-2,-1,-2,0,0,1,-1,1,-1,-1,1]
@@ -143,6 +148,7 @@ while (inicio!=0): #0 significa: "Não recomeçar um partida". Por isso um While
 
 	rodada=0 #Contador do número da rodada dentro de uma determinada partida.
 	vencedor = 0 #Indica se já existe um vencedor.
+	
 	while(rodada<=10 and vencedor==0):
 	
 		rodada+=1
@@ -154,8 +160,10 @@ while (inicio!=0): #0 significa: "Não recomeçar um partida". Por isso um While
 			posicaox=coluna(entrada) #Coordenadas do símbolo inserido por último.
 			posicaoy=linha(entrada) #Coordenadas do símbolo inserido por último.
 
-			tabela(entrada,SimbP1) #Chama a tabela para ser atualizada e mostrada aos jogadores.
-			
+			while(tabela(entrada,SimbP1))==1: #Chama a tabela para ser atualizada e mostrada aos jogadores.
+							entrada = jogadaPlayer()
+							tabela(entrada,SimbP1)			
+
 			if (rodada>=5):
 				g=ganhou(coord,posicaox,posicaoy,SimbP1)
 				if (g==1):
@@ -179,7 +187,9 @@ while (inicio!=0): #0 significa: "Não recomeçar um partida". Por isso um While
 			posicaox=coluna(entrada2)
 			posicaoy=linha(entrada2)
 
-			tabela(entrada2,SimbP2)
+			while(tabela(entrada,SimbP2))==1: #Chama a tabela para ser atualizada e mostrada aos jogadores.
+				entrada = jogadaPlayer()
+				tabela(entrada,SimbP2)
 
 			if (rodada>=5):
 				g=ganhou(coord,posicaox,posicaoy,SimbP2)
