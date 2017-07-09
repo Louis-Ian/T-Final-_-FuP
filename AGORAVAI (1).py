@@ -110,18 +110,19 @@ def jogadaPlayer(): #Função que recebe a linha e a coluna do player,
 def simbolo():
 	Simb = raw_input("Símbolo do jogador 1: ")
 
-	global SimbP1
-	global SimbP2
+	SimbReturn = []
 
 	if Simb == "X":
-		SimbP1 = "X"
-		SimbP2 = "O"
+		SimbReturn += Simb
+		SimbReturn += "O"
+		return SimbReturn
 	elif Simb == "O":
-		SimbP1 = "O"
-		SimbP2 = "X"
+		SimbReturn += Simb
+		SimbReturn += "X"
+		return SimbReturn
 	else:
-			print("Insira símbolos válidos 'X' ou 'O':")
-			return simbolo()
+		print("Insira símbolos válidos 'X' ou 'O':")
+		return simbolo()
 
 vitoriasP1=0 #Contador de vitórias do Jogador 1.
 vitoriasP2=0 #Contador de vitórias do Jogador 2.
@@ -136,7 +137,9 @@ while (inicio!=0): #0 significa: "Não recomeçar um partida". Por isso um While
 	coord = [[' ', ' ', ' '],[' ', ' ', ' '],[' ',' ', ' ']]
 
 	print "PARTIDA ", partida,":"
-	simbolo()
+	simbolos = simbolo()
+	SimbP1 = simbolos[0]
+	SimbP2 = simbolos[1]
 
 	rodada=0 #Contador do número da rodada dentro de uma determinada partida.
 	vencedor = 0 #Indica se já existe um vencedor.
