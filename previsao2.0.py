@@ -176,7 +176,6 @@ while (inicio!=0): #0 significa: "Não recomeçar um partida". Por isso um While
 					vitoriasP1+=1
 			  		vencedor=1
 					print "JOGADOR 1 VENCEU O JOGO ", partida
-			if (rodada>=3):
 				if (g==0 and previsao2==1):
 					vitoriasP2+=1
 			  		vencedor=1
@@ -202,7 +201,6 @@ while (inicio!=0): #0 significa: "Não recomeçar um partida". Por isso um While
 					vitoriasP2+=1
 				  	vencedor=1
 					print "JOGADOR 2 VENCEU O JOGO ", partida
-			if (rodada>=3):
 				if (g==0 and previsao1==1):
 					vitoriasP1+=1
 			  		vencedor=1
