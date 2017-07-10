@@ -118,7 +118,7 @@ def validadorDeCoord(vetorComCoordenas):
 	Coluna = coluna(vetorComCoordenas)
 
 	if (coord[Linha][Coluna] != " "):
-		print("Insira coordenadas que ainda não utilizadas:")
+		print("Insira coordenadas ainda não utilizadas.")
 		return False
 	else:
 		return True
@@ -194,7 +194,11 @@ while (inicio!=0): #0 significa: "Não recomeçar um partida". Por isso um While
 
 		if rodada%2==0 and rodada<10:
 			print("JOGADOR 2: ")
-			entrada2 = jogadaPlayer()
+
+			SituacaoDasCoordenadas = False
+			while(SituacaoDasCoordenadas==False):
+				entrada2 = jogadaPlayer()
+				SituacaoDasCoordenadas = validadorDeCoord(entrada2)
 
 			posicaox=coluna(entrada2)
 			posicaoy=linha(entrada2)
