@@ -26,15 +26,14 @@ def tabela(vetor, simb): #Função que recebe o símbolo como parâmetro e, ao c
 
 	coord[linha][coluna] = simb
 	
-	print  "  A   B   C"
+	print  "\n  A   B   C"
 	print "1 %s | %s | %s 1" %( coord[0][0], coord[0][1], coord[0][2]) 
 	print " ---+---+---"
 	print "2 %s | %s | %s 2" %( coord[1][0], coord[1][1], coord[1][2])  
 	print " ---+---+---"
 	print "3 %s | %s | %s 3" %( coord[2][0], coord[2][1], coord[2][2])  
-	print "  A   B   C"
+	print "  A   B   C\n"
 	#Os prints's acima imprimem a figura sendo que as posições da "matriz" coord já estão identificadas com os seus lugares na figura.
-
 
 rotacionadorX=[0,0,1,2,1,2,1,2,0,0,-1,-2,-1,-2,-1,-2,0,0,1,-1,1,-1,-1,1]
 rotacionadorY=[1,2,1,2,0,0,-1,-2,-1,-2,-1,-2,0,0,1,2,1,-1,1,-1,0,0,1,-1]
@@ -76,7 +75,7 @@ def previsao(matriz,posicaoX,posicaoY, simbPi): #Função que prevê a vitória 
 
 def jogadaPlayer(): #Função que recebe a linha e a coluna do player,
 	# valida entrada e retorna posição da jogada
-	Coords = raw_input("Insira as coordenadas da casa desejada:")
+	Coords = raw_input("Insira as coordenadas da casa desejada: ")
 	Coords = list(Coords) #separa todas a letras recebidas, criando uma string
 
 	tamanho = len(Coords)
@@ -125,6 +124,7 @@ def validadorDeCoord(vetorComCoordenas):
 
 def simbolo():
 	Simb = raw_input("Símbolo do jogador 1: ")
+	print("\n")
 
 	SimbReturn = []
 
@@ -152,7 +152,7 @@ while (inicio!=0): #0 significa: "Não recomeçar um partida". Por isso um While
 	
 	coord = [[' ', ' ', ' '],[' ', ' ', ' '],[' ',' ', ' ']]
 
-	print "PARTIDA ", partida,":"
+	print "PARTIDA ", partida,":\n"
 	simbolos = simbolo()
 	SimbP1 = simbolos[0]
 	SimbP2 = simbolos[1]
@@ -181,7 +181,7 @@ while (inicio!=0): #0 significa: "Não recomeçar um partida". Por isso um While
 				if (g==1):
 					vitoriasP1+=1
 			  		vencedor=1
-					print "JOGADOR 1 VENCEU O JOGO ", partida
+					print "JOGADOR 1 VENCEU O JOGO ", partida, ".\n"
 			if (rodada>=3):
 				for m in range(3):
 					for n in range(3):
@@ -190,7 +190,7 @@ while (inicio!=0): #0 significa: "Não recomeçar um partida". Por isso um While
 						  if (p==1):
 						  	vitoriasP1+=1
 			  		  		vencedor=1
-						  	print "JOGADOR 1 JÁ VENCEU O JOGO ", partida
+						  	print "JOGADOR 1 JÁ VENCEU O JOGO ", partida, ".\n"
 
 		if rodada%2==0 and rodada<10:
 			print("JOGADOR 2: ")
@@ -210,7 +210,7 @@ while (inicio!=0): #0 significa: "Não recomeçar um partida". Por isso um While
 				if (g==1):
 					vitoriasP2+=1
 				  	vencedor=1
-					print "JOGADOR 2 VENCEU O JOGO ", partida
+					print "JOGADOR 2 VENCEU O JOGO ", partida,".\n"
 			if (rodada>=3):
 				for m in range(3):
 					for n in range(3):
@@ -219,18 +219,18 @@ while (inicio!=0): #0 significa: "Não recomeçar um partida". Por isso um While
 						  if (p==1):
 						  	vitoriasP2+=1
 			  		  		vencedor=1
-						  	print "JOGADOR 2 JÁ VENCEU O JOGO ", partida
+						  	print "JOGADOR 2 JÁ VENCEU O JOGO ", partida,".\n"
 
 		if rodada==10: #Verifica se houve empate.
-			print "NINGUEM VENCEU O JOGO ", partida
+			print "NINGUEM VENCEU O JOGO ", partida, ".\n"
 			empate+=1
 
 	partida+=1
 	vencedor=0
 	p = 0
 	g = 0
-	print "Usuario 1 ", vitoriasP1, " x ", vitoriasP2, " Usuario 2" #Mostra o placar.
+	print "Usuario 1: ", vitoriasP1, "\nUsuario 2: ",vitoriasP2 #Mostra o placar.
 	print "Empates: ", empate
-	print "Digite 0 para acabar o jogo"
-	print "Digite 1 para continuar jogando"
+	print "\nDigite 0 para acabar o jogo."
+	print "Digite 1 para continuar jogando.\n"
 	inicio=input()
