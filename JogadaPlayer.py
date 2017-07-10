@@ -7,8 +7,9 @@ def jogadaPlayer(): #Função que recebe a linha e a coluna do player,
 
 	tamanho = len(Coords)
 
-	if(tamanho >= 2)
+	if(tamanho >= 2):
 		entradaLinha = Coords[0]#variáveis criadas para saber se a entrada é valida
+		entradaColuna = Coords[1]
 		if((ord(entradaLinha) >= 48 and ord(entradaLinha) <= 57) or not Coords[1]):
 			print("Insira posições válidas, letra seguida de número.")
 			return jogadaPlayer()
