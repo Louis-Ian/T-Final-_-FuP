@@ -1,5 +1,10 @@
 # -*- coding: utf-8 -*-
 
+#Integrantes da equipe:
+#Adaías Abner Brito Silva - 400657
+#Hélio Matheus Sales Silva - 400800
+#Louis Ian Silva dos Santos - 402525
+
 #As duas funções a seguir comparam as coordenadas entradas pelos jogadores 
 # e identificam a posição(linha e coluna) em que o símbolo deve ser colocado
 def linha(v): #Função que recebe um vetor e retorna o índice da linha
