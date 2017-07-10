@@ -34,14 +34,22 @@ def tabela(vetor, simb): #Função que recebe o símbolo como parâmetro e, ao c
 	print "  A   B   C"
 	#Os prints's acima imprimem a figura sendo que as posições da "matriz" coord já estão identificadas com os seus lugares na figura.
 
+	
+#rotacionadorx e rotacionadory, sao vetores que formaram as possiveis posicoes u1,u2,v1,v2
+#de 1 em 1, ela busca a proxima para formar uma sequencia 
+#de 2 em 2, ela vira de posicao
 
 rotacionadorX=[0,0,1,2,1,2,1,2,0,0,-1,-2,-1,-2,-1,-2,0,0,1,-1,1,-1,-1,1]
 rotacionadorY=[1,2,1,2,0,0,-1,-2,-1,-2,-1,-2,0,0,1,2,1,-1,1,-1,0,0,1,-1]
 
+#funcao ganhou verifica se existe uma sequencia de  3 simbolos iguais 
+#posicao x e posicao y, sao as coordenadas que estamos verificando e simbPi eh o simbolo que ela carrega
+#posicao u1,v1,u2,v2 sao as possiveis posicao da matriz verificaremos seus simbolos para sinalizar a sequencia
+#uma matriz 3x3, varias posicoes de 0 a 2, portanto sao os limites das possiveis posicoes
 
-def ganhou(matriz,posicaoX,posicaoY, simbPi): #Função que verifica se um jogador ganhou a partida através da verificação de uma sequência de três símbolos iguais. SimbPi é X ou O.
+def ganhou(matriz,posicaoX,posicaoY, simbPi): 
 	k=-2				
-	while(k<=21):		
+	while(k<=20):		
 		k+=2			
 		posicaoU1=posicaoX + rotacionadorX[k]   
 		posicaoV1=posicaoY + rotacionadorY[k]	
@@ -52,9 +60,12 @@ def ganhou(matriz,posicaoX,posicaoY, simbPi): #Função que verifica se um jogad
 				return 1
 	return 0
 
-def previsao(matriz,posicaoX,posicaoY, simbPi): #Função que prevê a vitória iminente do último jogador que inseriu um símbolo, ou seja, ela vai verificar se  ao redor do útlimo símbolo inserido existem duas maneiras de o jogo ser vencido pelo último que jogou.
+#funcao previsao verifica se existe duas sequencias possiveis com ' ' e um simbolo determinado por simbPi
+#mesmo funcionamento da funcao ganhou
+
+def previsao(matriz,posicaoX,posicaoY, simbPi): 
 	k=-2				
-	while(k<=21):		
+	while(k<=20):		
 		k+=2			
 		posicaoU1=posicaoX + rotacionadorX[k]   
 		posicaoV1=posicaoY + rotacionadorY[k]	
@@ -62,7 +73,7 @@ def previsao(matriz,posicaoX,posicaoY, simbPi): #Função que prevê a vitória 
 		posicaoV2=posicaoY + rotacionadorY[k+1]	
 		if (posicaoU1>=0 and posicaoU1<=2 and posicaoV1>=0 and posicaoV1<=2 and posicaoU2>=0 and posicaoU2<=2 and posicaoV2>=0 and posicaoV2<=2):
 		  	if ((matriz[posicaoV1][posicaoU1]==simbPi and matriz[posicaoV2][posicaoU2]==' ') or (matriz[posicaoV1][posicaoU1]==' ' and   matriz[posicaoV2][posicaoU2]==simbPi)): 
-	  	  		while(k<=21):
+	  	  		while(k<=20):
 	  	 			k+=2
 	  				posicaoU01=posicaoX + rotacionadorX[k]   
 	  				posicaoV01=posicaoY + rotacionadorY[k]	
