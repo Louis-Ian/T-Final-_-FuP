@@ -1,5 +1,10 @@
 # -*- coding: utf-8 -*-
 
+#Integrantes da equipe:
+#Adaías Abner Brito Silva - 
+#Hélio Matheus Sales Silva - 400800
+#Louis Ian Silva dos Santos - 402525
+
 #Esses dois vetores a seguir(v1 e v2) são referências para comparar as coordenadas entradas pelos jogadores e, assim, identificar a posição(linha e coluna) em que o X ou 0 devem ser colocados.
 def linha(v): #Função que retorna o valor de i, o qual é o número da linha da figura do jogo.
 	v1=['1','2','3']  #Vetor das coordenadas das linhas.
