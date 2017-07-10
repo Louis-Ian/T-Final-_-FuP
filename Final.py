@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 #Integrantes da equipe:
-#Adaías Abner Brito Silva - 
+#Adaías Abner Brito Silva - 400657
 #Hélio Matheus Sales Silva - 400800
 #Louis Ian Silva dos Santos - 402525
 
