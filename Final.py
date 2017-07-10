@@ -118,7 +118,7 @@ def validadorDeCoord(vetorComCoordenas):
 	Coluna = coluna(vetorComCoordenas)
 
 	if (coord[Linha][Coluna] != " "):
-		print("Insira coordenadas ainda não utilizadas:")
+		print("Insira coordenadas ainda não utilizadas.")
 		return False
 	else:
 		return True
