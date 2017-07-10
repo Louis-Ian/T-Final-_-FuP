@@ -1,10 +1,5 @@
 # -*- coding: utf-8 -*-
 
-#Integrantes da equipe:
-#Adaías Abner Brito Silva - 400657
-#Hélio Matheus Sales Silva - 400800
-#Louis Ian Silva dos Santos - 402525
-
 #As duas funções a seguir comparam as coordenadas entradas pelos jogadores 
 # e identificam a posição(linha e coluna) em que o símbolo deve ser colocado
 def linha(v): #Função que recebe um vetor e retorna o índice da linha
@@ -30,14 +25,14 @@ def tabela(vetor, simb): #Função que recebe o símbolo como parâmetro e, ao c
 	coluna = ord(vetor[0])-65
 	linha = int(vetor[1])-1
 
-	coord[linha][coluna] = simb
+	Matriz[linha][coluna] = simb
 	
 	print  "\n  A   B   C"
-	print "1 %s | %s | %s 1" %( coord[0][0], coord[0][1], coord[0][2]) 
+	print "1 %s | %s | %s 1" %( Matriz[0][0], Matriz[0][1], Matriz[0][2]) 
 	print " ---+---+---"
-	print "2 %s | %s | %s 2" %( coord[1][0], coord[1][1], coord[1][2])  
+	print "2 %s | %s | %s 2" %( Matriz[1][0], Matriz[1][1], Matriz[1][2])  
 	print " ---+---+---"
-	print "3 %s | %s | %s 3" %( coord[2][0], coord[2][1], coord[2][2])  
+	print "3 %s | %s | %s 3" %( Matriz[2][0], Matriz[2][1], Matriz[2][2])  
 	print "  A   B   C\n"
 	#Os prints's acima imprimem a figura sendo que as posições da "matriz" coord já estão identificadas com os seus lugares na figura.
 
