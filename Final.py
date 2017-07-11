@@ -262,5 +262,5 @@ while (inicio!=0): #0 significa: "Não recomeçar um partida"
 	previsao2=0
 	print "Usuario 1: ", vitoriasP1, "\nUsuario 2: ",vitoriasP2 #placar.
 	print "Empates: ", empate
-	inicio=input("Digite 0 para acabar o jogo\nou digite 1 para continuar jogando:")
+	inicio=input("\nDigite 0 para acabar o jogo\nou 1 para continuar jogando:")
 	 #O jogador escolhe se vai continuar jogando ou não
