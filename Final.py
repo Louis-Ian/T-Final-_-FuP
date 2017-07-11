@@ -53,7 +53,7 @@ rotacionadorY=[1,2,1,2,0,0,-1,-2,-1,-2,-1,-2,0,0,1,2,1,-1,1,-1,0,0,1,-1]
 #posicao u1,v1,u2,v2 sao as possiveis posicao da matriz verificaremos seus simbolos para sinalizar a sequencia
 #uma matriz 3x3, varias posicoes de 0 a 2, portanto sao os limites das possiveis posicoes
 
-def ganhou(matriz,posicaoX,posicaoY, simbPi): 
+def ganhou(matriz,posicaoX,posicaoY, simbPi):  #Função que verifica se um jogador ganhou a partida através da verificação de uma sequência de três símbolos iguais. SimbPi é X ou O.
 	k=-2				
 	while(k<=20):		
 		k+=2			
