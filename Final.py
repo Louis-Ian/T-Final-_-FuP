@@ -25,7 +25,7 @@ def coluna(v): #Função que recebe um vetor e retorna o índice da coluna
 
 Matriz = [[' ', ' ', ' '],[' ', ' ', ' '],[' ',' ', ' ']] #Vetor que receberá os X's e O's para aplicá-los na figura do jogo da velha.
 
-def tabela(vetor, simb): #Função que recebe o símbolo como parâmetro e, ao chamar as funções linha e coluna, define onde ele deve ser inserido na figura e a retorna atualizada.
+def tabela(vetor = ["A","1"], simb = " "): #Função que recebe o símbolo como parâmetro e, ao chamar as funções linha e coluna, define onde ele deve ser inserido na figura e a retorna atualizada.
 	
 	coluna = ord(vetor[0])-65
 	linha = int(vetor[1])-1
@@ -41,13 +41,21 @@ def tabela(vetor, simb): #Função que recebe o símbolo como parâmetro e, ao c
 	print "  A   B   C\n"
 	#Os prints's acima imprimem a figura sendo que as posições da "matriz" coord já estão identificadas com os seus lugares na figura.
 
-rotacionadorX=[0,0,1,2,1,2,1,2,0,0,-1,-2,-1,-2,-1,-2,0,0,1,-1,1,-1,-1,1] #Vetorres usados nas funões ganhou() e previsão()
+#rotacionadorx e rotacionadory, sao vetores que formaram as possiveis posicoes u1,u2,v1,v2
+#de 1 em 1, ela busca a proxima para formar uma sequencia 
+#de 2 em 2, ela vira de posicao
+
+rotacionadorX=[0,0,1,2,1,2,1,2,0,0,-1,-2,-1,-2,-1,-2,0,0,1,-1,1,-1,-1,1]
 rotacionadorY=[1,2,1,2,0,0,-1,-2,-1,-2,-1,-2,0,0,1,2,1,-1,1,-1,0,0,1,-1]
 
+#funcao ganhou verifica se existe uma sequencia de  3 simbolos iguais 
+#posicao x e posicao y, sao as coordenadas que estamos verificando e simbPi eh o simbolo que ela carrega
+#posicao u1,v1,u2,v2 sao as possiveis posicao da matriz verificaremos seus simbolos para sinalizar a sequencia
+#uma matriz 3x3, varias posicoes de 0 a 2, portanto sao os limites das possiveis posicoes
 
-def ganhou(matriz,posicaoX,posicaoY, simbPi): #Função que verifica se um jogador ganhou a partida através da verificação de uma sequência de três símbolos iguais. SimbPi é X ou O.
+def ganhou(matriz,posicaoX,posicaoY, simbPi): 
 	k=-2				
-	while(k<=21):		
+	while(k<=20):		
 		k+=2			
 		posicaoU1=posicaoX + rotacionadorX[k]   
 		posicaoV1=posicaoY + rotacionadorY[k]	
@@ -58,9 +66,12 @@ def ganhou(matriz,posicaoX,posicaoY, simbPi): #Função que verifica se um jogad
 				return 1
 	return 0
 
-def previsao(matriz,posicaoX,posicaoY, simbPi): #Função que prevê a vitória iminente do último jogador que inseriu um símbolo, ou seja, ela vai verificar se  ao redor do útlimo símbolo inserido existem duas maneiras de o jogo ser vencido pelo último que jogou.
+#funcao previsao verifica se existe duas sequencias possiveis com ' ' e um simbolo determinado por simbPi
+#mesmo funcionamento da funcao ganhou
+
+def previsao(matriz,posicaoX,posicaoY, simbPi): 
 	k=-2				
-	while(k<=21):		
+	while(k<=20):		
 		k+=2			
 		posicaoU1=posicaoX + rotacionadorX[k]   
 		posicaoV1=posicaoY + rotacionadorY[k]	
@@ -68,7 +79,7 @@ def previsao(matriz,posicaoX,posicaoY, simbPi): #Função que prevê a vitória 
 		posicaoV2=posicaoY + rotacionadorY[k+1]	
 		if (posicaoU1>=0 and posicaoU1<=2 and posicaoV1>=0 and posicaoV1<=2 and posicaoU2>=0 and posicaoU2<=2 and posicaoV2>=0 and posicaoV2<=2):
 		  	if ((matriz[posicaoV1][posicaoU1]==simbPi and matriz[posicaoV2][posicaoU2]==' ') or (matriz[posicaoV1][posicaoU1]==' ' and   matriz[posicaoV2][posicaoU2]==simbPi)): 
-	  	  		while(k<=21):
+	  	  		while(k<=20):
 	  	 			k+=2
 	  				posicaoU01=posicaoX + rotacionadorX[k]   
 	  				posicaoV01=posicaoY + rotacionadorY[k]	
@@ -140,8 +151,7 @@ def validadorDeCoord(vetorComCoordenas): #Função que checa se a coordenada ins
 
 def simbolo(): #Função validadora do Símbolo (X ou O), que recebe uma letra e retorna um vetor
 	Simb = raw_input("Símbolo do jogador 1: ") 
-	print("\n")
-
+	print("")
 	SimbReturn = [] 
 
 	if Simb == "X": #Caso o símbolo inserido seja um X, retorna um vetor ["X","O"]
@@ -164,7 +174,8 @@ empate=0 #Contador de empates.
 partida=1 #Indica o número da partida atual.
 inicio=1 #Serve para saber se uma partida deve ser recomeçada ou não.
 g=0 
-p=0
+previsao2=0
+previsao1=0
 
 while (inicio!=0): #0 significa: "Não recomeçar um partida"
 	
@@ -177,8 +188,11 @@ while (inicio!=0): #0 significa: "Não recomeçar um partida"
 
 	rodada=0 #Contador do número da rodada dentro da partida.
 	vencedor = False #Indica se já existe um vencedor.
+
+	tabela()
+
 	while(rodada<=10 and vencedor==False):
-	
+		
 		rodada+=1
 		
 		if rodada%2!=0 and rodada<10: #Se a rodada for ímpar o Jogador1 deve jogar.
@@ -195,20 +209,19 @@ while (inicio!=0): #0 significa: "Não recomeçar um partida"
 			tabela(entrada,SimbP1) #Chama a tabela para ser atualizada e mostrada aos jogadores.
 			
 			if (rodada>=5):
-				g=ganhou(Matriz,posicaox,posicaoy,SimbP1) #Checa se o jogador ganhou com seu ultimo movimento
-				if (g==1): #Caso ele ganhe, o placar é modificado e vencedor vira verdadeiro
+				g=ganhou(Matriz,posicaox,posicaoy,SimbP1)
+				if (g==1):
 					vitoriasP1+=1
-			  		vencedor=True
-					print "JOGADOR 1 VENCEU O JOGO ", partida, ".\n"
-			if (rodada>=5):
+			  		vencedor=1
+					print "JOGADOR 1 VENCEU O JOGO ", partida
+				if (g==0 and previsao2==1):
+					vitoriasP2+=1
+			  		vencedor=1
+					print "JOGADOR 2 JÁ VENCEU O JOGO ", partida
 				for m in range(3):
 					for n in range(3):
-						if (Matriz[n][m]==SimbP1 and p!=1):
-						  p=previsao(Matriz,m,n,SimbP1)
-						  if (p==1):
-						  	vitoriasP1+=1
-			  		  		vencedor=1
-						  	print "JOGADOR 1 JÁ VENCEU O JOGO ", partida, ".\n"
+						if (Matriz[n][m]==SimbP1 and previsao1==0):
+						 	previsao1=previsao(Matriz,m,n,SimbP1)
 
 		if rodada%2==0 and rodada<10: #Se a rodada for par o jogador 2 deve jogar.
 			print("JOGADOR 2: ")
@@ -224,20 +237,19 @@ while (inicio!=0): #0 significa: "Não recomeçar um partida"
 			tabela(entrada2,SimbP2)#Chama a tabela para ser atualizada e mostrada aos jogadores.
 			
 			if (rodada>=5):
-				g=ganhou(Matriz,posicaox,posicaoy,SimbP2) #Checa se o jogador ganhou com seu ultimo movimento
-				if (g==1):  #Caso ele ganhe, o placar é modificado e vencedor vira verdadeiro
+				g=ganhou(Matriz,posicaox,posicaoy,SimbP2)
+				if (g==1):
 					vitoriasP2+=1
-				  	vencedor=True
-					print "JOGADOR 2 VENCEU O JOGO ", partida,".\n"
-			if (rodada>=3):
+				  	vencedor=1
+					print "JOGADOR 2 VENCEU O JOGO ", partida
+				if (g==0 and previsao1==1):
+					vitoriasP1+=1
+			  		vencedor=1
+					print "JOGADOR 1 JÁ VENCEU O JOGO ", partida
 				for m in range(3):
 					for n in range(3):
-						if (Matriz[n][m]==SimbP2 and p!=1):
-						  p=previsao(Matriz,m,n,SimbP2)
-						  if (p==1):
-						  	vitoriasP2+=1
-			  		  		vencedor=1
-						  	print "JOGADOR 2 JÁ VENCEU O JOGO ", partida,".\n"
+						if (Matriz[n][m]==SimbP2 and previsao2==0):
+						  	previsao2=previsao(Matriz,m,n,SimbP2)
 
 		if rodada==10: #caso seja a rodada 10,o empate é declarado e o placar é alterado.
 			print "NINGUEM VENCEU O JOGO ", partida, ".\n"
@@ -245,9 +257,10 @@ while (inicio!=0): #0 significa: "Não recomeçar um partida"
 
 	partida+=1
 	vencedor=False #Vencedor é reinicializado
-	p = 0
 	g = 0
+	previsao1=0
+	previsao2=0
 	print "Usuario 1: ", vitoriasP1, "\nUsuario 2: ",vitoriasP2 #placar.
 	print "Empates: ", empate
-	print "\nDigite 0 para acabar o jogo ou \ndigite outra letra qualquer para continuar jogando.\n"
-	inicio=input() #O jogador escolhe se vai continuar jogando ou não
+	inicio=input("Digite 0 para acabar o jogo\nou digite 1 para continuar jogando:")
+	 #O jogador escolhe se vai continuar jogando ou não
