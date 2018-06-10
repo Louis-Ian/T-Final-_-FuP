@@ -1,6 +1,6 @@
 #-*- coding:utf-8 -*-
 
-coord = [[' ', ' ', ' '],[' ', ' ', ' '],[' ',' ', ' ']]
+coord = [[" ", " ", " "],[" ", " ", " "],[" "," ", " "]]
 
 def tabela(vetor, simb): #Função que recebe o símbolo como parâmetro e, ao chamar as funções linha e coluna, define onde ele deve ser inserido na figura e a retorna atualizada.
 	
