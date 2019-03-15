@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+#
 
 #Integrantes da equipe:
 #Adaías Abner Brito Silva - 400657
@@ -32,13 +33,13 @@ def tabela(vetor = ["A","1"], simb = " "): #Função que recebe o símbolo como 
 
 	Matriz[linha][coluna] = simb
 	
-	print  "\n  A   B   C"
-	print "1 %s | %s | %s 1" %( Matriz[0][0], Matriz[0][1], Matriz[0][2]) 
-	print " ---+---+---"
-	print "2 %s | %s | %s 2" %( Matriz[1][0], Matriz[1][1], Matriz[1][2])  
-	print " ---+---+---"
-	print "3 %s | %s | %s 3" %( Matriz[2][0], Matriz[2][1], Matriz[2][2])  
-	print "  A   B   C\n"
+	print ( "\n  A   B   C")
+	print ("1 %s | %s | %s 1" %( Matriz[0][0], Matriz[0][1], Matriz[0][2]) )
+	print (" ---+---+---")
+	print ("2 %s | %s | %s 2" %( Matriz[1][0], Matriz[1][1], Matriz[1][2])  )
+	print (" ---+---+---")
+	print ("3 %s | %s | %s 3" %( Matriz[2][0], Matriz[2][1], Matriz[2][2])  )
+	print ("  A   B   C\n")
 	#Os prints's acima imprimem a figura sendo que as posições da "matriz" coord já estão identificadas com os seus lugares na figura.
 
 #rotacionadorx e rotacionadory, sao vetores que formaram as possiveis posicoes u1,u2,v1,v2
@@ -78,21 +79,21 @@ def previsao(matriz,posicaoX,posicaoY, simbPi):
 		posicaoU2=posicaoX + rotacionadorX[k+1]	
 		posicaoV2=posicaoY + rotacionadorY[k+1]	
 		if (posicaoU1>=0 and posicaoU1<=2 and posicaoV1>=0 and posicaoV1<=2 and posicaoU2>=0 and posicaoU2<=2 and posicaoV2>=0 and posicaoV2<=2):
-		  	if ((matriz[posicaoV1][posicaoU1]==simbPi and matriz[posicaoV2][posicaoU2]==' ') or (matriz[posicaoV1][posicaoU1]==' ' and   matriz[posicaoV2][posicaoU2]==simbPi)): 
-	  	  		while(k<=20):
-	  	 			k+=2
-	  				posicaoU01=posicaoX + rotacionadorX[k]   
-	  				posicaoV01=posicaoY + rotacionadorY[k]	
-	  				posicaoU02=posicaoX + rotacionadorX[k+1]	
-	  				posicaoV02=posicaoY + rotacionadorY[k+1]
-	  				if (posicaoU01>=0 and posicaoU01<=2 and posicaoV01>=0 and posicaoV01<=2 and posicaoU02>=0 and posicaoU02<=2 and posicaoV02>=0 and posicaoV02<=2):
-		  				if ((matriz[posicaoV01][posicaoU01]==simbPi and matriz[posicaoV02][posicaoU02]==' ') or (matriz[posicaoV01][posicaoU01]==' ' and matriz[posicaoV02][posicaoU02]==simbPi)):
-		  					return 1 
+			if ((matriz[posicaoV1][posicaoU1]==simbPi and matriz[posicaoV2][posicaoU2]==' ') or (matriz[posicaoV1][posicaoU1]==' ' and   matriz[posicaoV2][posicaoU2]==simbPi)): 
+				while(k<=20):
+					k+=2
+					posicaoU01=posicaoX + rotacionadorX[k]   
+					posicaoV01=posicaoY + rotacionadorY[k]
+					posicaoU02=posicaoX + rotacionadorX[k+1]
+					posicaoV02=posicaoY + rotacionadorY[k+1]
+					if (posicaoU01>=0 and posicaoU01<=2 and posicaoV01>=0 and posicaoV01<=2 and posicaoU02>=0 and posicaoU02<=2 and posicaoV02>=0 and posicaoV02<=2):
+						if ((matriz[posicaoV01][posicaoU01]==simbPi and matriz[posicaoV02][posicaoU02]==' ') or (matriz[posicaoV01][posicaoU01]==' ' and matriz[posicaoV02][posicaoU02]==simbPi)):
+							return 1
 	return 0
 
 def jogadaPlayer(): #Função que solicita as coordenadas ao player,
 	# valida entrada e retorna posição da jogada
-	Coords = raw_input("Insira as coordenadas da casa desejada: ")
+	Coords = input("Insira as coordenadas da casa desejada: ")
 	Coords = list(Coords) #separa todas a letras recebidas, criando uma string
 
 	tamanho = len(Coords)
@@ -150,7 +151,7 @@ def validadorDeCoord(vetorComCoordenas): #Função que checa se a coordenada ins
 		return True
 
 def simbolo(): #Função validadora do Símbolo (X ou O), que recebe uma letra e retorna um vetor
-	Simb = raw_input("Símbolo do jogador 1: ") 
+	Simb = input("Símbolo do jogador 1: ") 
 	print("")
 	SimbReturn = [] 
 
@@ -181,7 +182,7 @@ while (inicio!=0): #0 significa: "Não recomeçar um partida"
 	
 	Matriz = [[' ', ' ', ' '],[' ', ' ', ' '],[' ',' ', ' ']] #Inicializando a matriz
 
-	print "\nPARTIDA ", partida,":\n"
+	print ("\nPARTIDA ", partida,":\n")
 	simbolos = simbolo()
 	SimbP1 = simbolos[0] #Atribuindo os símbolos do jogador 1 do jogador 2
 	SimbP2 = simbolos[1]
@@ -212,12 +213,12 @@ while (inicio!=0): #0 significa: "Não recomeçar um partida"
 				g=ganhou(Matriz,posicaox,posicaoy,SimbP1)
 				if (g==1):
 					vitoriasP1+=1
-			  		vencedor=1
-					print "JOGADOR 1 VENCEU O JOGO ", partida
+					vencedor=1
+					print ("JOGADOR 1 VENCEU O JOGO ", partida)
 				if (g==0 and previsao2==1):
 					vitoriasP2+=1
-			  		vencedor=1
-					print "JOGADOR 2 JÁ VENCEU O JOGO ", partida
+					vencedor=1
+					print ("JOGADOR 2 JÁ VENCEU O JOGO ", partida)
 				for m in range(3):
 					for n in range(3):
 						if (Matriz[n][m]==SimbP1 and previsao1==0):
@@ -240,19 +241,19 @@ while (inicio!=0): #0 significa: "Não recomeçar um partida"
 				g=ganhou(Matriz,posicaox,posicaoy,SimbP2)
 				if (g==1):
 					vitoriasP2+=1
-				  	vencedor=1
-					print "JOGADOR 2 VENCEU O JOGO ", partida
+					vencedor=1
+					print ("JOGADOR 2 VENCEU O JOGO ", partida)
 				if (g==0 and previsao1==1):
 					vitoriasP1+=1
-			  		vencedor=1
-					print "JOGADOR 1 JÁ VENCEU O JOGO ", partida
+					vencedor=1
+					print ("JOGADOR 1 JÁ VENCEU O JOGO ", partida)
 				for m in range(3):
 					for n in range(3):
 						if (Matriz[n][m]==SimbP2 and previsao2==0):
 						  	previsao2=previsao(Matriz,m,n,SimbP2)
 
 		if rodada==10: #caso seja a rodada 10,o empate é declarado e o placar é alterado.
-			print "NINGUEM VENCEU O JOGO ", partida, ".\n"
+			print ("NINGUEM VENCEU O JOGO ", partida, ".\n")
 			empate+=1
 
 	partida+=1
@@ -260,7 +261,7 @@ while (inicio!=0): #0 significa: "Não recomeçar um partida"
 	g = 0
 	previsao1=0
 	previsao2=0
-	print "Usuario 1: ", vitoriasP1, "\nUsuario 2: ",vitoriasP2 #placar.
-	print "Empates: ", empate
+	print ("Usuario 1: ", vitoriasP1, "\nUsuario 2: ",vitoriasP2) #placar.
+	print ("Empates: ", empate)
 	inicio=input("\nDigite 0 para acabar o jogo\nou 1 para continuar jogando:")
 	 #O jogador escolhe se vai continuar jogando ou não
